@@ -1,35 +1,26 @@
-.red {
-    background-color: red;
-    width: 40px;
-    height: 50px;
-} 
+* {
+    color: green;
+}
+
+/* 태그 선택자 */
+div {
+    background-color: aqua;
+}
+
+/* 클래스 선택자 */
 .orange {
-    background-color: orange;
-    width: 80px;
-    height: 50px;
-} 
-.yellow {
-    background-color: yellow;
-    width: 120px;
-    height: 50px;
-} 
-.green {
-    background-color: green;
-    width: 160px;
-    height: 50px;
-} 
-.blue {
+    color: orange;
+}
+
+.bg-red {
     background-color: blue;
-    width: 220px;
-    height: 50px;
-} 
-.navy {
-    background-color: navy;
-    width: 260px;
-    height: 50px;
-} 
-.purple {
-    background-color: purple;
-    width: 300px;
-    height: 50px;
-} 
+}
+
+/* 아이디 선택자 */
+#red {
+    color: red;
+}
+
+#list_1 {
+    color: violet;
+}
