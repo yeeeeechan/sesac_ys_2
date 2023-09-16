@@ -18,3 +18,24 @@ input:focus {
     background-color: navy;
     color: white;
 }
+
+
+.box::before {
+    content: "택시";
+}
+
+.box::after {
+    content: "빨리";
+}
+
+input[disabled] {
+    background-color:red;
+}
+
+input[placeholder="이름"] {
+    background-color: orange;
+}
+
+input:not([placeholder]) {
+    background-color: blue;
+}

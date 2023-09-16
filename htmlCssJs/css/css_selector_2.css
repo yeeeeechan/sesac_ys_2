@@ -46,3 +46,32 @@ a:hover {
 .fruits *:not(span) {
     background-color: blueviolet;
 }
+
+
+div.before-el::before {
+    content: "앞!";
+}
+
+div.after-el::after {
+    content: " hot! ";
+    color: white;
+    font-size: 12px;
+    background-color: red;
+    border-radius: 3px;
+}
+
+input[type=text] {
+    background-color: green;
+}
+
+input[name=pw] {
+    background-color: red;
+}
+
+.wm-3 {
+    color: red;
+}
+
+.fruits-3 > .wm-3 {
+    color: blue;
+}
