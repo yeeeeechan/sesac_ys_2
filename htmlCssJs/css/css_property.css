@@ -1,0 +1,71 @@
+@font-face {
+    font-family: 'Pretendard-Regular';
+    src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+
+:root {
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    font-style: namal;
+}
+
+.font-css {
+    font-size: 2em;
+    font-weight: 900;
+}
+
+.parent {
+    font-size: 10px;
+    font-weight: 900;
+}
+
+.child-font {
+    font-size: 1.5rem;
+}
+
+.width-css {
+    background-color: blue;
+    color: white;
+    display: inline-block;
+    width: 500px;
+    max-width: 100%;
+    height: ;
+    min-height: ;
+    max-height: ;
+}
+
+
+.border-css {
+    border: 3px dashed red;
+    border-radius: 10px;
+}
+
+.circle {
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+}
+
+.margin-css {
+    background-color: green;
+    color: white;
+    margin: 10px 20px;
+    border: 2px solid black;
+    padding: 30px 20px;
+}
+
+.box-css {
+    background-color: blueviolet;
+    box-sizing: border-box;
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    border: 2px solid black;
+    margin: 20px;
+}
