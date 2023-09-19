@@ -57,6 +57,7 @@ body{
 }
 
 .red {
+    transform: skewX(10deg);
     z-index: 2;
     background-color: red;    
 }

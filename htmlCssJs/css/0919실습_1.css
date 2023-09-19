@@ -2,6 +2,20 @@ body{
     margin: 0;
 }
 
+div {
+    width: 100px;
+    height: 100px;
+    color: white;
+    background-color: black;
+}
+
+.transition:active {
+    width: 300px;
+    height: 300px;
+    transition: 1s 0.5s;
+}
+
+
 /* .container {
     width: 500px;
     height: 500px;
@@ -32,7 +46,7 @@ body{
     right: 100px;
     top: 100px;
     background-color: blueviolet;
-} */
+}
 
 .container {
     position: relative;
@@ -106,4 +120,5 @@ body{
     width: 400px;
     height: 150px;
     top: 100px;
-}
+}  */
+
