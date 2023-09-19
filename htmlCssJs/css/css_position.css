@@ -1,0 +1,75 @@
+body{
+    margin: 0;
+}
+
+/* relative */
+/* .box {
+    /* position: static이 기본값
+    width: 100px;
+    height: 100px;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    background-color: blue;
+}
+
+.sm-box {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+}
+
+.box-red {
+    position: relative;
+    background-color: red;
+    top: 20px;
+    left: 30px;
+ }
+ 
+.box-orange {
+    position: relative;
+    background-color: orange;
+}
+
+.box-yellow {
+    background-color: yellow;
+}
+
+.box-green {
+    background-color: green;
+} */
+
+.container {
+    position: relative;
+    background-color: bisque;
+    width: 500px;
+    height: 500px;
+}
+
+.item {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+}
+
+.red {
+    z-index: 2;
+    background-color: red;    
+}
+
+.orange {
+    z-index: 1;
+    background-color: orange;
+    top: 20px;
+    left: 20px;
+}
+
+.yellow {
+    background-color: yellow;
+    top: 40px;
+    left: 40px;
+}
