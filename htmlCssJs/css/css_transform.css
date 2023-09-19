@@ -30,3 +30,9 @@
     width: 500px;
     transition: 1s;
 }
+
+.img-sticky {
+    position: sticky;
+    top: 10px;
+    left: 10px;
+}
