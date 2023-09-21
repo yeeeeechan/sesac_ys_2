@@ -1,0 +1,41 @@
+h1:hover {
+    color: red;
+}
+
+a:active {
+    background-color: blue;
+}
+
+input:focus {
+    background-color: orange;
+}
+
+.stripes *:nth-child(2n) {
+    background-color: yellow;
+}
+
+.stripes *:nth-child(2n+1) {
+    background-color: navy;
+    color: white;
+}
+
+
+.box::before {
+    content: "택시";
+}
+
+.box::after {
+    content: "빨리";
+}
+
+input[disabled] {
+    background-color:red;
+}
+
+input[placeholder="이름"] {
+    background-color: orange;
+}
+
+input:not([placeholder]) {
+    background-color: blue;
+}

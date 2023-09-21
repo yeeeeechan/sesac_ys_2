@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js 수업</title>
+</head>
+<body>
+    <script>
+        // console.log("80" === 80) //자료형까지 같은지 비교하므로 false
+        // console.log("80" !== 80) //자료형까지 비교하므로 true
+
+        // console.log(50 * 20)
+        // console.log(50 / 10)
+        // console.log(50 % 3) //나머지
+        // console.log(5 ** 3) //거듭제곱 5의 3승
+
+        // let num = 5;
+        // console.log(num % 2 == 1) //true
+        // console.log(num % 5 != 0) //num이 5의 배수인지 여부 판단 가능
+
+        // console.log( num > 4 && num < 5 ) //false
+        // console.log( num > 8 || num < 10 ) //true
+        // console.log( num < 5 || num > 8 ) //false
+
+        // console.log( !null )
+        // console.log( !undefined ) //true(아무런 값이 없다.) 특정 변수에 값이 있는지 없는지 판단할 때 사용
+
+        // console.log(num += 5)
+        // console.log(num)
+        // console.log(num -= 5)
+
+        // console.log(++num) //변수 앞에 ++을 쓰면 1증가시키고 출력, 뒤에 쓰면 출력한 후 1증가
+
+        // //결과를 직접 비교해 보기 위한 코드
+        // let result1, result2;
+        // let num1 = 10, num2 = 10;
+
+        // result1 = num1++;
+        // console.log(result1);
+
+        // result2 = ++num2;
+        // console.log(result2);
+
+        //--------------------------------------------------------------------함수
+        //명시적 함수 선언
+        funEx1(); //호이스팅 > 함수 선언하는 부분을 위로 빼서 생각하기 때문에 함수 선언 전에 호출해도 문제없음
+        function funEx1() {
+            console.log("hello 1");
+        }
+        
+        //함수 표현식으로 선언. 이렇게 만들어진 함수를 익명 함수라고 함. 이 방식에서는 선언 전에 미리 호출할 수 없음(오류)
+        let funEx2 = function() {
+            console.log("hello 2");
+        }
+
+        //함수 표현식으로 선언
+        let funEx3 = () => {
+            console.log("hello 3");
+        }
+
+        funEx1(); //함수 호출
+        funEx2();
+        funEx3();
+
+        //매개변수: 함수 외부에서 함수 내부로 값을 전달하고 싶을 때
+        //반환값: 함수 내부의 값을 함수 외부로 전달하고 싶을 때
+
+        //매개변수 X, 반환값(return) X
+        function sayHello1() {
+            console.log("Hello");
+        }
+
+        //매개변수 O, 반환값(return) X
+        function sayHello2(num) {
+            console.log("Hello");
+        }
+
+        //매개변수 X, 반환값(return) O
+        function sayHello3() {
+            return "Hello";
+        }
+
+        let hello = sayHello3();
+        console.log(hello);
+
+        //매개변수 O, 반환값(return) O
+        function sayHello4(num1, num2 ) {
+            console.log("sayHello4");
+            return num1 + num2;
+        }
+
+        let sum = sayHello4(5, 6);
+        console.log(sum);
+
+
+    </script>
+</body>
+</html>

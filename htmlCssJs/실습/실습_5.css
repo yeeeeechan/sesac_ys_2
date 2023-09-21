@@ -1,0 +1,49 @@
+.circle {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    margin: 20px;
+    background-color: green;
+    /* animation: move 3s 6 linear; */
+}
+
+.text {
+    position: relative;
+    animation: textmove linear 2s;
+}
+
+@keyframes textmove {
+    from {
+        width: 500%;
+        left: 100%
+    }
+    to {
+        width: 100%;
+        left: 0%;
+    }
+}
+
+/* @keyframes move {
+    0% {
+        left: 0px;
+        top: 0px;
+    }
+
+    25% {
+        left: 100px;
+        top: 0px;
+    }
+    50% {
+        left: 100px;
+        top: 100px;
+    }
+    75% {
+        left: 0px;
+        top: 100px;
+    }
+    100% {
+        left: 0px;
+        top: 0px;
+    }
+} */
