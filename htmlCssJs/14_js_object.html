@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js_Object</title>
+</head>
+<body>
+    <script>
+        let num = 5;
+        let num2 = num; //일반 자료형은 값을 복사해서 새로운 공간을 만듦
+        num2 += 5;
+        console.log(num, num2);
+
+        let arr = [1, 2, 3, 4, 5];
+        let arr2 = arr;  //Object 자료형은 값을 복사해서 전달하는 게 아니라 공간의 주소를 전달함, 같은 공간을 바라보고 있는 것.
+        arr2.reverse();
+        console.log(arr, arr2);
+
+
+        let date = new Date();
+        console.log(date.getFullYear());
+        console.log(date.getDay()); //요일이 나옴(숫자로)
+        console.log(date.getMonth()+1); //+1해야 현재 달이 나옴
+        console.log(date.getTime()); //1970년 1월 1일 0시부터 얼마 밀리초만큼 지났는지
+
+        let expired = new Date("2023-09-22").getTime();
+        let today = new Date().getTime();
+
+        if(expired < today ) {
+            console.log("만료일이 지났습니다.")
+        } else {
+            console.log("아직 사용할 수 있습니다.")
+        }
+
+    </script>
+</body>
+</html>
