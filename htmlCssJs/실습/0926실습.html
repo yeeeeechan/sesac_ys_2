@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0926 실습</title>
+    <style>
+       
+    </style>
+</head>
+
+<!-- <body>
+    <form>
+        <div>
+            값1: <input type="text" id="v1" />
+            <br />
+            값2: <input type="text" id="v2"/>
+            <br />
+            연산자: <input type="text" id="op"/>
+            <br />
+            결과: <input type="text" id="res" readonly/>
+        </div>
+        <br /><br />
+        <div>
+            <button type="button" onclick="calculator()">계산하기</button>
+            <input type="reset" value="초기화" />
+        </div>
+    </form>
+
+    <script>
+        function calculator() {
+        //함수가 실행될 때마다 그때그때 들어 있는 값을 가져올 것이므로 함수 안에 변수를 선언해 줘야 함.
+            let v1 = Number(document.getElementById("v1").value);
+            let v2 = Number(document.getElementById("v2").value);
+            let op = document.getElementById("op").value;
+            let res;
+
+            if(op == '+') {
+                res = v1 + v2;
+            } else if(op == '-') {
+                res = v1 - v2;
+            } else if(opr == '*') {
+                res = v1 * v2;
+            } else if(op == '/') {
+                res = v1 / v2;
+            } else if(op == '%') {
+                res = v1 % v2;
+            }
+            document.getElementById("res").value = res;
+        }
+    </script>
+</body> -->
+
+<body>
+    <div> 작성자 <input type="text" id="name" /></div>
+    <div> 내용 <input type="text" id="content" /></div>
+    <div>
+        <button type="button" onclick="addContent()">작성</button>
+    </div>
+
+    <table border="1" cellspacing="0">
+        <thead>
+            <tr>
+                <th>번호</th>
+                <th>작성자</th>
+                <th>내용</th>
+                <th>작성일</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <script>
+        let num = 1;
+        function addContent() {
+            const name = document.getElementById("name").value
+            const content = document.getElementById("content").value
+            const date = new Date();
+            const dateString = `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}`
+
+            const tr = document.createElement("tr")
+            
+            const td1 = document.createElement("td");
+            td1.innerText = num;
+            
+            const td2 = document.createElement("td");
+            td2.innerText = name;
+            
+            const td3 = document.createElement("td");
+            td3.innerText = content;
+
+            const td4 = document.createElement("td");
+            td4.innerText = dateString;
+
+            tr.append(td1)
+            tr.append(td2)
+            tr.append(td3)
+            tr.append(td4)
+          
+            const tbody = document.querySelector("tbody");
+            tbody.append(tr)
+
+            num++;
+        }
+    </script>
+
+</body>
+</html>
+
+<!-- 방명록 -->
+<!-- 
+    function addContent에서는
+        input 2개의 값을 가져올 것
+        2개의 값과 함께 가져올 것: 번호, 작성일
+        tr 태그를 만든다.
+        td 태그 4개를 tr 태그의 자식 요소로 추가 (tr.append)
+        tbody 태그의 자식 요소로 tr 태그를 추가한다.
+    
+ -->

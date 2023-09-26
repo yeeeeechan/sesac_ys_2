@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <style>
+        .container {
+            width: 600px;
+            height: 400px;
+            background-color: beige;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+        }
+
+        .red {
+            background-color: red;
+        }
+
+        .orange {
+            background-color: orange;
+        }
+
+        .yellow {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" name="name" id="input" value="aaa" />
+    <button type="button" onclick="useVal()">val() 사용하기</button>
+
+    <br />
+
+    <span id="span1">hello</span>
+    <button type="button" onclick="useCss()">css() 사용하기</button>
+    <button type="button" onclick="useAttr()">attr() 사용하기</button>
+    <button type="button" onclick="useText()">text() 사용하기</button>
+    <button type="button" onclick="useAppend()">append() 사용하기</button>
+    <button type="button" onclick="useRemove()">remove() 사용하기</button>
+    <button type="button" onclick="useParent()">parent() 사용하기</button>
+    <button type="button" onclick="controlClass()">class 조작하기</button>
+
+
+
+    <div class="container">
+        <div class="box red" id="red"></div>
+        <div class="box orange"></div>
+        <div class="box yellow"></div>
+    </div>
+
+    <script>
+        // $("선택자").동작함수();
+    
+        function useVal() {
+            const value = $("#input").val();
+        // const value = document.getElementById("input").value -> js 코드
+        console.log(value)
+
+        $("#input").val("설정하고 싶은 값")
+        }
+        
+        function useCss() {
+            // .css() ; style을 변경
+            // const span = $("#span1") -> 이렇게 변수에 담아서 사용할 수도 있음. 이때는 변수에 제이쿼리 동작 함수 사용
+            $("#span1").css("font-size", "30px");
+            $("#span1").css("color", "red");
+
+            // const span = document.getElementById("span1");
+            // span.style = "font-size: 30px; color:red"
+        }
+
+        function useAttr() {
+            $("input").val("")
+            $("input").attr("placeholder", "이름을 입력하세요.");
+            // setAttributes() -> js 코드의 경우
+        }
+
+        function useText() {
+            //innerText와 동일
+            // $("#span1").text("hi hi hi")
+
+            //innerHTML과 동일
+            $("#span1").html("hi <b>lily</b>");
+        }
+
+        function useAppend() {
+            //container 클래스의 마지막 자식으로 추가
+            $(".container").append(`<div class="box red"></div>`)
+
+            //.container 클래스의 첫번째 자식으로 추가
+            $(".container").prepend(`<div class="box yellow"></div>`)
+        }
+
+        function useRemove() {
+            // $(".box.red").remove();
+
+            $(".container").empty();
+        }
+        
+        function useParent() {
+            //parent()
+            console.log("parent", $(".box.red").parent())
+
+            //parents()
+            console.log("parents", $(".box.red").parents())
+
+            // next()
+            console.log("next", $(".box.red").next())
+
+            // prev()
+            console.log("prev", $(".box.orange").prev())
+
+            //children()
+            console.log("children", $(".container").children())
+
+        }
+
+        function controlClass() {
+            const redBox = $("#red")
+            if(redBox.hasClass("red")) redBox.removeClass("red");
+            else redBox.addClass("red");
+        }
+
+    </script>
+</body>
+</html>

@@ -18,38 +18,38 @@
     <input type="text" name="email" />
 
     <script>
-        // let elById = document.getElementById("box");
-        // console.log(elById);
+        let elById = document.getElementById("box");
+        console.log(elById);
 
-        // let elByClass = document.getElementsByClassName("box");
-        // console.log(elByClass[0]);
-        // console.log(elByClass[1]);
+        let elByClass = document.getElementsByClassName("box");
+        console.log(elByClass[0]);
+        console.log(elByClass[1]);
 
-        // let elByTag = document.getElementsByTagName("span");
-        // console.log(elByTag[0]);
+        let elByTag = document.getElementsByTagName("span");
+        console.log(elByTag[0]);
 
-        // let elByName = document.getElementsByName("email");
-        // console.log(elByName);
+        let elByName = document.getElementsByName("email");
+        console.log(elByName);
 
-        // //선택자를 이용하여 요소를 선택
-        // let elBySelector = document.querySelector(".box");
-        // let elBySelectorAll = document.querySelectorAll(".box");
+        //선택자를 이용하여 요소를 선택
+        let elBySelector = document.querySelector(".box");
+        let elBySelectorAll = document.querySelectorAll(".box");
 
-        // console.log(elBySelector)
-        // console.log(elBySelectorAll)
+        console.log(elBySelector)
+        console.log(elBySelectorAll)
 
-        // let elBox2 = document.getElementById("box2")
+        let elBox2 = document.getElementById("box2")
 
-        // console.log(elBox2);
-        // console.log(elBox2.innerText); //선택된 요소의 텍스트만 가져옴
-        // console.log(elBox2.innerHTML); //선택된 요소의 텍스트를 포함하여 모든 콘텐츠를 가져옴
+        console.log(elBox2);
+        console.log(elBox2.innerText); //선택된 요소의 텍스트만 가져옴
+        console.log(elBox2.innerHTML); //선택된 요소의 텍스트를 포함하여 모든 콘텐츠를 가져옴
 
-        // elBox2.innerText = "hello <b>lily</b>"; //태그 인식 안 함
-        // elBox2.innerHTML = "hello <b>lily</b>"; //태그까지 적용하여 반영 가능
+        elBox2.innerText = "hello <b>lily</b>"; //태그 인식 안 함
+        elBox2.innerHTML = "hello <b>lily</b>"; //태그까지 적용하여 반영 가능
 
         let elByClass2 = document.querySelectorAll(".item")
         console.log(elByClass2[0]);
-        elByClass2[0].innerHTML = "Hi Hi Hi";
+        elByClass2[0].innerHTML = "Hi Hi Hi"; //querySelectorAll은 배열 형식으로 찾기 때문에 인덱스로 지정해야
 
     </script>
 
