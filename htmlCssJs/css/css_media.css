@@ -1,0 +1,46 @@
+.container{
+    width: 500px;
+    height: 500px;
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: center;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+}
+
+.red {
+    background-color: red;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+
+/* 너비가 700px 이상일 경우, 아래와 같은 코드를 덮어쓰겠다. (작은 화면을 기준으로 작업할 경우)*/
+/* @media screen and (min-width: 700px) {
+    .container {
+        background-color: rgb(110, 110, 222);
+    }
+} */
+
+/* 너비가 700px 이하일 경우 */
+@media screen and (max-width: 500px) {
+    .yellow {
+        background-color: darkcyan;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .container {
+        flex-direction: column;
+        /* display: block; */
+    }
+}

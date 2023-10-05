@@ -1,0 +1,127 @@
+/* .container {
+    width: 500px;
+    height: 500px;
+    display: flex;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    border: 1px solid red;
+    background-color: black;
+    margin: 10px;
+    border-radius: 5%;
+}
+
+@media screen and (max-width: 700px) {
+    .box {
+        background-color: skyblue;
+    }
+    .container {
+        display: block;
+    }
+} */
+
+
+
+/* @media screen and (min-width: 500px) {
+    body {
+        background-color: skyblue;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    body {
+        background-color: orange;
+    }
+}
+
+@media screen and (max-height: 300px) {
+    p {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+}
+
+@media screen and (min-height: 500px) {
+    p {
+        background-color: green;
+    }
+} */
+
+:root {
+    --nav-height-lg: 100px;
+    --nav-height-sm: 60px;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    font-weight: 700;
+    justify-content: space-between;
+    align-items: center;
+
+  }
+
+  /* HEADER */
+  header {
+    width: 100%;
+    height: var(--nav-height-lg);
+    z-index: 100;
+    position: fixed;
+  }
+
+  /* 768px 보다 클때의 header */
+    header .inner {
+    background-color: lightblue;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  /* LOGO */
+  header .inner .logo {
+    color: white;
+    font-size: 30px;
+  }
+
+  header .inner .menu li {
+    margin: 10px;
+  }
+
+  /* 미디어 쿼리 작성 768px 이하일 때  */
+  @media screen and (max-width: 768px) {
+
+    header {
+        height: var(--nav-height-sm);
+        /* position: fixed; */
+    }
+
+    header .inner {
+        justify-content: center;
+        display: flex;
+    }
+
+    header .inner .logo {
+        text-align: center;
+    }
+
+    header .inner .menu {
+        width: 100vw;
+        flex-direction: column;
+        margin-top: 225px;
+        background-color: rgb(230, 243, 245);
+    }
+
+    header .inner .menu li {
+        font-weight: 400;
+    }
+
+
+  }
