@@ -63,7 +63,7 @@
     list-style: none;
     display: flex;
     font-weight: 700;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
   }
 
@@ -80,21 +80,24 @@
     background-color: lightblue;
     height: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
+    position: relative;
   }
 
   /* LOGO */
   header .inner .logo {
     color: white;
     font-size: 30px;
+    position: absolute;
   }
 
   header .inner .menu li {
     margin: 10px;
   }
 
-  /* 미디어 쿼리 작성 768px 이하일 때  */
+  /* 미디어 쿼리 작성 768px 이하일 때  
+  미디어 쿼리 내에서 선택자 통일해서 지정해 줘야. (선택자 우선순위 때문)*/
   @media screen and (max-width: 768px) {
     header {
       height: var(--nav-height-sm);
@@ -112,11 +115,14 @@
 
     header .inner .logo {
       text-align: center;
+      position: static;   /* 줬던 포지션을 리셋하고 싶으면 디폴트값을 주면 된다. */
+      height: var(--nav-height-sm); /* 또는 height: 100%, 이글루가 헤더의 전체 높이를 차지하게 한다.*/
+      line-height: var(--nav-height-sm); /* 세로 가운데 정렬 */
     }
 
     header .inner .menu {
       width: 100vw;
-      flex-direction: column;
+      flex-direction: column; /*또는 text-align:center;*/
       /* 원래 코드 / 수정한 코드 -> margin 주석 */
       /* margin-top: 225px; */
       background-color: rgb(230, 243, 245);
@@ -126,3 +132,6 @@
       font-weight: 400;
     }
   }
+
+  /* 메뉴 클래스 요소들은 중앙 정렬하고 이글루 로고만 좌측으로 밀기 위해서는
+  일단 inner에 가로세로 중앙 정렬해 주고, logo에 position:absolute 적용하여 left 주기(부모 요소에 position값 줘야 적용됨) */

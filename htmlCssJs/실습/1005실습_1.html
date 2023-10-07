@@ -11,17 +11,42 @@
     <div>내용 : <input class = content type="text" name="text" /> </div>
     <button type="button" name="upload"> 작성 </button>
 
+    <style>
+        table {
+            margin-top:  50px;            
+        }
+
+        td {
+            cursor: pointer;
+            width: calc(100% /7);
+            height: 80px;
+            vertical-align: top;
+        }
+
+        tr > td:first-child,
+        tr > th:first-child {
+        color: red;
+      }
+
+        tr > td:last-child,
+        tr > th:last-child {
+        color: blue;
+      }
+    </style>
+
+    </style>
+
     <h2 align = "center" style="color:green;">2022년 7월</h2>
     <table cellpadding="30" align = "center">
         <tbody>
             <tr>
-                <td style="color:red;">日</td>
-                <td>月</td>
-                <td>火</td>
-                <td>水</td>
-                <td>木</td>
-                <td>金</td>
-                <td style="color:blue;">土</td>
+                <th>日</th>
+                <th>月</th>
+                <th>火</th>
+                <th>水</th>
+                <th>木</th>
+                <th>金</th>
+                <th>土</th>
             </tr>
             <tr>
                 <td></td>
@@ -30,46 +55,46 @@
                 <td></td>
                 <td></td>
                 <td>1</td>
-                <td style="color:blue;">2</td>
+                <td>2</td>
             </tr>
             <tr>
-                <td style="color:red;">3</td>
+                <td>3</td>
                 <td>4</td>
                 <td>5</td>
                 <td>6</td>
                 <td>7</td>
                 <td>8</td>
-                <td style="color:blue;">9</td>
+                <td>9</td>
             </tr>
             <tr>
-                <td style="color:red;">10</td>
+                <td>10</td>
                 <td>11</td>
                 <td>12</td>
                 <td>13</td>
                 <td>14</td>
                 <td>15</td>
-                <td style="color:blue;">16</td>
+                <td>16</td>
             </tr>
             <tr>
-                <td style="color:red;">17</td>
+                <td>17</td>
                 <td>18</td>
                 <td>19</td>
                 <td>20</td>
                 <td>21</td>
                 <td>22</td>
-                <td style="color:blue;">23</td>
+                <td>23</td>
             </tr>
             <tr>
-                <td style="color:red;">24</td>
+                <td>24</td>
                 <td>25</td>
                 <td>26</td>
                 <td>27</td>
                 <td>28</td>
                 <td>29</td>
-                <td style="color:blue;">30</td>
+                <td>30</td>
             </tr>
             <tr>
-                <td style="color:red;">31</td>
+                <td>31</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -102,8 +127,8 @@
         // input 태그의 내용을 불러온다
         // 위 내용을 td 태그에 넣는다.
         $("button").on("click", function(){
-            let content = $(".content").val();
-            $(selDate).append("<br/>", content)
+            let content = $(".content").val(); //val 안에 인자가 없으면 해당 값을 입력하겠다. 없으면 가져오겠다.
+            $(selDate).append("<br/>", content) //content와 td 태그 내 내용 모두 인라인 요소이므로
         })
 
     </script>
