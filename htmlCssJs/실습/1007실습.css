@@ -1,0 +1,52 @@
+@font-face {
+    font-family: 'KCC-Sonkeechung';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2212@1.0/KCC-Sonkeechung.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+
+}
+
+h1 {
+    text-align: center;
+    background-color: rgb(243, 249, 228);
+    font-family: 'KCC-Sonkeechung';
+}
+
+.title-area {
+    margin: 30px;
+}
+
+.block {
+    margin: 50px;
+}
+
+.card-img {
+    display: flex;
+    justify-content: space-evenly;       
+}
+
+.card-img-top {
+    height: 300px;
+    object-fit: cover;
+}
+
+h1 .slider-title {
+    margin-top: 100px;
+}
+
+.img-slider .img {
+    object-fit: cover;
+}
+
+.slider .img-wrapper{
+    width:100%;
+    height:auto;
+}
+
+.slider .img-wrapper .img{
+    width: auto;
+    height: 500px;
+}
