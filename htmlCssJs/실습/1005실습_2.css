@@ -65,7 +65,6 @@
     font-weight: 700;
     justify-content: space-between;
     align-items: center;
-
   }
 
   /* HEADER */
@@ -77,7 +76,7 @@
   }
 
   /* 768px 보다 클때의 header */
-    header .inner {
+  header .inner {
     background-color: lightblue;
     height: 100%;
     display: flex;
@@ -97,31 +96,33 @@
 
   /* 미디어 쿼리 작성 768px 이하일 때  */
   @media screen and (max-width: 768px) {
-
     header {
-        height: var(--nav-height-sm);
-        /* position: fixed; */
+      height: var(--nav-height-sm);
+      /* position: fixed; */
     }
 
     header .inner {
-        justify-content: center;
-        display: flex;
+      /* 원래 코드 */
+      /* justify-content: center;
+      display: flex; */
+      
+      /* 수정한 코드 */
+      display: block;
     }
 
     header .inner .logo {
-        text-align: center;
+      text-align: center;
     }
 
     header .inner .menu {
-        width: 100vw;
-        flex-direction: column;
-        margin-top: 225px;
-        background-color: rgb(230, 243, 245);
+      width: 100vw;
+      flex-direction: column;
+      /* 원래 코드 / 수정한 코드 -> margin 주석 */
+      /* margin-top: 225px; */
+      background-color: rgb(230, 243, 245);
     }
 
     header .inner .menu li {
-        font-weight: 400;
+      font-weight: 400;
     }
-
-
   }
