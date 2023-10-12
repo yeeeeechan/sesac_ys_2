@@ -12,6 +12,7 @@ app.set("view engine", "ejs");
 
 app.use("/static", express.static(__dirname + "/static"));
 // __dirname : c: ~~~~/01-express/static 에 클라이언트가 /static 이름으로 들어올 수 있다. (미들웨어 등록)
+// set 메소드 다음에 작성함. get으로 요청받은 후, 실행되기 전 그사이에 일어남.
 
 // app.use("/public", express.static(__dirname + "/static"));
 // __dirname : c: ~~~~/01-express/static 에 클라이언트가 /public 이름으로 들어올 수 있다.
@@ -24,19 +25,19 @@ app.get("/", function (req, res) {
   // send는 값을 보냄
 });
 // http 메소드의 두 번째 인자로 넘겨주는 콜백 함수의 매개변수 2개
-// 첫 번째 매개변수 : request 객체 (요청)
-// 두 번째 매개변수 : response 객체 (응답)
+// 첫 번째 매개변수 : request 객체 (요청) 클라이언트의 요청에 대한 정보가 담겨 있음
+// 두 번째 매개변수 : response 객체 (응답) 서버가 클라이언트에게 응답할 정보가 담겨 있음
 
 // localhost:8000/test
 app.get("/test", function (req, res) {
-  console.log(__dirname); // 이 파일이 위치한 절대 경로가 찍힘, 노드에서는 상대 경로로 파일을 이용할 수 있는 경로는 거의 없다.
+  console.log(__dirname); // 이 파일이 위치한 절대 경로가 찍힘, 노드에서는 상대 경로로 파일을 이용할 수 있는 경로는 거의 없다. (보안 등등의 이유로 express에서 권한을 막기 때문. 상대 경로로 볼 수 있으면 해당 컴퓨터의 모든 라이브러리를 열람할 수 있게 된다.)
   res.sendFile(__dirname + "/index.html"); // 절대 경로로 파일을 여는 방법. 보통은 잘 안 씀
 });
 
 app.get("/ejs", function (req, res) {
   // render 메소드의 기본 디렉토리는 "./views/"
   // res.render("index"); // views 폴더 바로 하위에 있는 index.ejs 파일
-  res.render("test/index"); // 확장자명은 생략 가능
+  res.render("test/index"); // 확장자명은 생략 가능, 서버가 클라이언트에게 test 폴더 하위에 있는 index 파일을 렌더링하여 보내겠다는 의미
 });
 
 app.get("/practice", function (req, res) {
