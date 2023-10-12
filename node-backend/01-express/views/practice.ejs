@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <body>
+        <%=name %>
+
+        <!-- ejs 태그 안에 오는 js 코드는 한 줄로 끝나야 함 -->
+        <% for(let i = 0; i < product.length; i++) { %>
+            <div> 상품 <%=product[i] %> </div>
+            <!-- ejs 태그 안에 바로 =이 오면 = 뒤에 있는 변수나 값을 html로 노출시킴 -->
+        <% } %>
+
+        <%= "hello world"%>
+        <!-- ejs 태그 안에 바로 -이 오면 - 뒤에 있는 변수나 값을 html로 노출시킴(html 태그를 인식함)-->
+        <%="<div>안녕?</div>" %>
+        <%-"<div>안녕?</div>" %>
+
+        <%-include('index.ejs') %>
+
+        <script>
+            // 백엔드에서 넘겨준 product라는 변수는 ejs 문법 안에서만 사용 가능
+            console.log(product) // 오류
+        </script>
+    </body>
+</html>
