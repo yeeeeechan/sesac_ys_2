@@ -31,7 +31,8 @@ console.log(x, y);
 // const name = obj.name;
 
 const { age, name: name2 } = obj;
-// 구조 분해 할당 중에 key 이름 바꾸는 방법(원래 변수명: 바꿀 변수명 > 새로운 변수에 할당하는 것이기 때문에 객체 자체의 key값이 바뀌는 것은 아님! )
+// 구조 분해 할당 중에 key 이름 바꾸는 방법
+// (원래 변수명: 바꿀 변수명 > 새로운 변수에 할당하는 것이기 때문에 객체 자체의 key값이 바뀌는 것은 아님!)
 console.log(age, name2);
 console.log("obj: ", obj);
 console.log(obj.name);
