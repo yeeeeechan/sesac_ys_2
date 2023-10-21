@@ -178,12 +178,18 @@
         // 쿼리를 만드는 메소드
         const urlQuery = new URLSearchParams(data).toString() //query로 만들고 싶은 객체(data)를 넣는다.
 
-        // --------------- 방법 1 (then 체이닝) ----------------
+        // --------------- 방법 1 (then 체이닝)--------------------
         // fetch(`/fetch?${urlQuery}`)
         //   .then((res) => {
         //     console.log("원본", res)
+        //     // json() 메소드를 이용해서 parsing 해야 함. 
+        //     // json() 은 promise 기반
+        //     // const data = res.json();
+        //     // console.log(data) // Promise pending (undefined) (문제 발생)
         //     return res.json()
         //   }).then((res) => {
+        //     // 위에서 파싱 해서 return하고 있기 때문에,
+        //     // 이 함수의 res는 서버에서 여러분들이 응답한 객체
         //     console.log("파싱", res)
         //   })
 

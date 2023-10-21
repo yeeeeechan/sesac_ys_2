@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1019 실습</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form name="join">
+      이름 <input type="text" name="name" id="name" required />
+      <fieldset>
+        <legend>성별</legend>
+        <input type="radio" name="gender" value="male" required /> <label for="male">남자</label>
+        <input type="radio" name="gender" value="female" required /> <label for="female">여자</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>생년월일</legend>
+        <select id="year" name="birth">
+          <% for (let i = 2023; i >= 1990;  i--) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select> 년
+        <select id="month" name="birth">
+          <% for (let i = 1; i <= 12;  i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select> 월
+        <select id="date" name="birth">
+          <% for (let i = 1; i <= 31;  i++) { %>
+          <option value="<%= i %>"><%= i %></option>
+          <% } %>
+        </select> 일
+      </fieldset>
+
+      <fieldset>
+        <legend>관심사</legend>
+        <input type="checkbox" name="interest" /> <label for="trip">여행</label>
+        <input type="checkbox" name="interest" /> <label for="fashion">패션</label>
+        <input type="checkbox" name="interest" /> <label for="food">음식</label>
+      </fieldset>
+
+      <button type="button" onclick="axiosGet()"> 회원가입 </button>
+    </form>
+
+    <form name="login">
+      ID <input type="text" name="id" required />
+      PW <input type="password" name="pw" required />
+
+      <button type="button" onclick="joinPost()"> 로그인 </button>
+    </form>
+
+    <h4 id="result"></h4>
+
+    <script>
+      function getData1() {
+        const form = document.forms["join"]
+
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+          birth: form.birth.value,
+          interest: form.interest.value,
+        }
+        return data
+      }
+
+      function getData2() {
+        const form = document.forms["login"]
+
+        const data = {
+          id: form.id.value,
+          pw: form.pw.value
+        }
+        return data
+      }
+
+      function joinPost() {
+        const data = getData2()
+
+        axios({
+          method: "POST",
+          url: "joinPost",
+          data: data,
+        }).then((res) => {
+          if (res.data) {
+            $("#result").html("로그인 성공!").css("color", "blue")
+          } else {
+            $("#result").html("아이디 또는 비번이 틀렸습니다.").css("color", "red")
+          }
+          console.log(res)
+        })
+      }
+
+
+      function axiosGet() {
+        const data = getData1()
+
+        axios({
+          method: "GET",
+          url: "join",
+          params: data,
+        }).then((res) => {
+          $("#result").html(`회원가입 성공! ${data.name} 님, 환영합니다.`)
+          console.log(res.data)
+        })
+      }
+    </script>
+
+  </body>
+</html>
+</body>
+</html>
