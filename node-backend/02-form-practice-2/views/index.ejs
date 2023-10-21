@@ -8,6 +8,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
   <body>
+    <h2> 실습1. 회원가입</h2>
     <form name="join">
       이름 <input type="text" name="name" id="name" required />
       <fieldset>
@@ -28,7 +29,7 @@
           <option value="<%= i %>"><%= i %></option>
           <% } %>
         </select> 월
-        <select id="date" name="birth">
+        <select id="day" name="birth">
           <% for (let i = 1; i <= 31;  i++) { %>
           <option value="<%= i %>"><%= i %></option>
           <% } %>
@@ -43,13 +44,16 @@
       </fieldset>
 
       <button type="button" onclick="axiosGet()"> 회원가입 </button>
+      <!-- type="button" 별도로 지정해 줘야 함(기본값이 submit) -->
     </form>
+
+    <h2>실습2. 로그인</h2>
 
     <form name="login">
       ID <input type="text" name="id" required />
       PW <input type="password" name="pw" required />
 
-      <button type="button" onclick="joinPost()"> 로그인 </button>
+      <button type="button" onclick="loginPost()"> 로그인 </button>
     </form>
 
     <h4 id="result"></h4>
@@ -57,12 +61,27 @@
     <script>
       function getData1() {
         const form = document.forms["join"]
+        // .forms : 페이지 내에 있는 모든 form을 가져옴.
+        // document.forms= {
+        // join : <form></form>
+        // register: <form></form>
+        // ...
+        // }
+
+        const interest = []
+
+        for (let input of form.interest) {
+          // input의 type이 radio이거나, checkbox인 경우 input의 속성으로 checked라는 게 존재
+          if (input.checked) interest.push(input.value)
+        }
+
+        console.log(interest)
 
         const data = {
           name: form.name.value,
           gender: form.gender.value,
           birth: form.birth.value,
-          interest: form.interest.value,
+          interest: interest, // 체크박스의 경우, 체크 여부를 판별하여 value 값에 담지 못함.
         }
         return data
       }
@@ -77,12 +96,12 @@
         return data
       }
 
-      function joinPost() {
+      function loginPost() {
         const data = getData2()
 
         axios({
           method: "POST",
-          url: "joinPost",
+          url: "loginPost",
           data: data,
         }).then((res) => {
           if (res.data) {

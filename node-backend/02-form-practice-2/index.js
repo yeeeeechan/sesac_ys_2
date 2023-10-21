@@ -1,7 +1,7 @@
 const { render } = require("ejs");
 const express = require("express");
 const app = express();
-const PORT = 8000;
+const PORT = 8888;
 
 app.set("view engine", "ejs");
 
@@ -17,7 +17,7 @@ app.get("/join", function (req, res) {
 });
 
 // 실습 2번 참고 (1019)
-app.post("/joinPost", function (req, res) {
+app.post("/loginPost", function (req, res) {
   const id = "sesac";
   const pw = "123123";
   // req.body와 id, pw를 비교하는 코드 작성하고,
@@ -31,12 +31,14 @@ app.post("/joinPost", function (req, res) {
   //   }
   // }
 
-  function joinresult() {
+  function loginresult() {
     req.body.id == id && req.body.pw == pw ? true : false;
   }
 
-  const result = joinresult();
+  const result = loginresult();
   res.send(result);
 });
 
-app.listen(PORT, function () {});
+app.listen(PORT, function () {
+  console.log(`Sever Open : ${PORT}`);
+});
