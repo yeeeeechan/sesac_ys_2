@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>등록한 프로필</title>
+  </head>
+  <style>
+    body {
+      background-color: black;
+      width: 50vw;
+    }
+
+    .area {
+      text-align: center;
+      padding: 50px;
+      background-color: white;
+      border-radius: 10px;
+    }
+
+    img {
+      width: 200px;
+      height: 230px;
+    }
+  </style>
+
+  <body>
+    <div class="area">
+      <img src="/<%= src %>" alt="" />
+      <h3> <%= user.id %> 님, 환영합니다 </h5>
+        <div> 비밀번호 : <%= user.pw %> </div>
+        <div> 이름 : <%= user.name %> </div>
+        <div> 나이 : <%= user.age %> </div>
+    </div>
+  </body>
+</html>

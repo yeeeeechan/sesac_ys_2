@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>파일 업로드 실습</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <fieldset>
+        <legend> 가입 정보 </legend>
+        <input type="text" name="id" placeholder="아이디" /> <br />
+        <input type="text" name="pw" placeholder="비밀번호" /> <br />
+        <input type="text" name="name" placeholder="이름" /><br />
+        <input type="text" name="age" placeholder="나이" /><br />
+      </fieldset>
+      <br />
+      <input type="file" name="userfile" /><br /><br />
+      <button type="submit">회원가입</button>
+    </form>
+
+    <form name="dynamic-upload">
+      <button type="button" onclick="dynamicUpload()"> (동적 폼 전송) 회원가입 </button>
+    </form>
+
+    <div id="dynamic-upload-result"></div>
+
+    <script>
+      function dynamicUpload() {
+        const form = document.forms["dynamic-upload"]
+
+        const formData = new FormData()
+
+        formData.append("id", form.id.value)
+        formData.append("pw", form.pw.value)
+        formData.append("name", form.name.value)
+        formData.append("age", form.id.age)
+        formData.append("profile", form.userfile.files[0])
+
+        console.log(form.userfile.files)
+
+        axios({
+          method: "post",
+          url: "/upload/dynamic",
+          data: formData,
+          headers: {
+            "content-type": "multipart/form-data"
+          }
+        }).then((res) => {
+          const result = document.getElementById("dynamic-upload-result")
+          result.innerHTML = `<img src = "/${res.data.src}" width = "200" />`
+          result.innerHTML =
+        })
+      }
+    </script>
+  </body>
+</html>
