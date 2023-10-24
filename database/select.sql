@@ -8,7 +8,7 @@ select * from customer where not custid='bunny';
 -- 2000-01-01 이후에 태어난 회원 조회
 select * from customer where birth > '2000-01-01';
 
--- 2000-01-01과 2005-01-01 사이에 태어난 회원 조회
+-- 2000-01-01과 2005-01-01 사이에 태어난 회원 조회 (양끝 값 포함)
 select * from customer where birth between '2000-01-01' and '2005-01-01';
 
 -- addr가 대한민국 서울, 미국 로스앤젤레스 둘 중 하나라면 조회
