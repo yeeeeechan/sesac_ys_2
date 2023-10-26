@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1019 실습</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form name="login">
+      ID <input type="text" name="id" required />
+      PW <input type="password" name="pw" required />
+
+      <button type="button" onclick="loginPost()"> 로그인 </button>
+    </form>
+
+    <h4 id="result"></h4>
+
+    <script>
+      function getData() {
+        const form = document.forms["login"]
+
+        const data = {
+          id: form.id.value,
+          pw: form.pw.value
+        }
+        return data
+      }
+
+      function loginPost() {
+        const data = getData()
+
+        axios({
+          method: "POST",
+          url: "/",
+          data: data,
+        }).then((res) => {
+          if (res.data) {
+            $("#result").html("로그인 성공!").css("color", "blue")
+          } else {
+            $("#result").html("아이디 또는 비번이 틀렸습니다.").css("color", "red")
+          }
+          console.log(res)
+        })
+      }
+    </script>
+
+  </body>
+</html>
+</body>
+</html>

@@ -49,8 +49,20 @@
           }
         }).then((res) => {
           const result = document.getElementById("dynamic-upload-result")
-          result.innerHTML = `<img src = "/${res.data.src}" width = "200" />`
+          const {
+            src,
+            id,
+            age,
+            name
+          } = res.data
           result.innerHTML =
+            `<div>
+            <img src=${src} width = 200px />
+            <h4> ${id} 님, 환영합니다! </h4>
+            <ul>
+              <li> 이름: ${name}</li>
+              <li> 나이: ${age}</li>
+            </ul></div>`
         })
       }
     </script>

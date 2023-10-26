@@ -50,7 +50,10 @@ app.post(
   "/upload/dynamic",
   uploadDetail.single("userfile"),
   function (req, res) {
-    res.send(data);
+    res.send({
+      ...req.body,
+      src: req.file.path,
+    });
   }
 );
 
