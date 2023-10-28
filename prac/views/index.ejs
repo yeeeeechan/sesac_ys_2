@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 연습해 봅시다 </title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+  </head>
+
+  <body>
+    <form name="info">
+      이름 <input type="text" name="name" required />
+
+      <fieldset>
+        <legend>성별</legend>
+        <input type="radio" name="gender" value="male" /> 남자
+        <input type="radio" name="gender" value="female" /> 여자
+      </fieldset>
+
+      <fieldset>
+        <legend>생년월일</legend>
+        <select name="year" id="">
+          <% for(let i=2023 ; i>=1990 ; i--) { %>
+          <option value="<%= i %>"> <%= i %> </option>
+          <% } %>
+        </select> 년
+
+        <select name="month" id="">
+          <% for(let i=1 ; i <= 12 ; i++) { %>
+          <option value="<%= i %>"> <%= i %> </option>
+          <% } %>
+        </select> 월
+
+        <select name="day" id="">
+          <% for(let i=1 ; i<=31 ; i++) { %>
+          <option value="<%=i%>"><%=i%></option>
+          <% } %>
+        </select> 일
+      </fieldset>
+
+      <fieldset>
+        <legend>관심사</legend>
+        <input type="checkbox" name="interest" value="travel" /> 여행
+        <input type="checkbox" name="interest" value="fashion" /> 패션
+        <input type="checkbox" name="interest" value="food" /> 음식
+      </fieldset>
+      <br />
+      <button onclick="joinPost()"> 회원가입 </button>
+    </form>
+
+    <h3 id="msg"></h3>
+
+    <script>
+      function getData() {
+        const form = document.forms["info"] //form을 선택하여 변수 from에 할당함
+
+        const data = {
+          name: form.name.value,
+          gender: form.gender.value,
+          birth: form.year.value - form.month.value - form.day.value,
+          interest: form.interest.value
+        }
+        return data
+      }
+
+      function joinPost() {
+        const formData = getData()
+        console.log("데이터:", formData)
+
+        axios({
+          method: "post",
+          url: "/join",
+          data: formData,
+        }).then((res) => {
+          console.log("응답으로 받은 데이터 :", res.data)
+          const {
+            name
+          } = res.data
+          document.querySelector("msg").innerHTML(`${name} 님, 가입을 환영해요!`)
+        })
+      }
+    </script>
+
+  </body>
+
+</html>
