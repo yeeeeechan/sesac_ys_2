@@ -13,12 +13,12 @@ exports.join = (req, res) => {
   });
 };
 
+// 모델과 연결해서 실제로 회원이 존재하는지 검색
 exports.login = (req, res) => {
   console.log("req.body 확인2", req.body);
-  User.loginUser(req.body, () => {
+  User.loginUser(req.body, (result) => {
     res.send({
-      id,
-      pw,
+      success: result,
     });
   });
 };

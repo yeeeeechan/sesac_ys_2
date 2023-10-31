@@ -19,17 +19,17 @@ exports.joinUser = (data, cb) => {
 };
 
 exports.loginUser = (data, cb) => {
-  const sql = `select (userid, pw) from user where userid like '${data.id}' and pw like '${data.pw}'`;
+  const sql = `select userid, pw from user where userid like '${data.id}' and pw like '${data.pw}'`;
   conn.query(sql, (err, result) => {
     if (err) {
       throw err;
     }
 
+    //conn.query 함수는 쿼리의 결과를 배열로 반환하므로, if문의 조건을 길이로 설정함
     let selectResult = false;
-    if (result) {
+    if (result.length > 0) {
       selectResult = true;
     }
-    //boolean 값을 반환
+    cb(selectResult);
   });
-  cb(result);
 };

@@ -52,6 +52,7 @@
       }
 
       function join() {
+        // 서버로 보낼 데이터를 만든다.
         const form = document.forms["joinForm"]
         const data = {
           id: form.userid.value,
@@ -59,6 +60,8 @@
           pw: form.password.value,
         }
 
+        // axios를 이용하여 서버로 보낸다.(api 요청)
+        // api 명세서(서버에서 받는 데이터(query, body, params), 응답 데이터 {result: true})
         axios({
           method: "post",
           url: "/welcome",
