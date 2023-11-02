@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+  </head>
+  <body>
+    <form name="searchForm">
+      <fieldset>
+        <legend>회원 정보</legend>
+        <div class="input-group">
+          <input type="text" name="userid" placeholder="아이디" required /> <br />
+          <input type="text" name="name" placeholder="이름" required /> <br />
+          <input type="password" name="password" placeholder="비밀번호" required />
+        </div>
+        <div class="btn-group">
+          <button type="button" onclick="search()">조회</button>
+        </div>
+      </fieldset>
+    </form>
+    <h3 id="resultMsg3"></h3>
+
+    <script>
+      function editUser() {
+        const form = document.forms["searchForm"]
+
+        axios({
+          method: 'patch',
+          url: '/search',
+          data: {
+
+            userid: form.userid.value,
+            name: form.name.value,
+            pw: form.password.value
+          }
+        }).then((res) => {
+          $("#resultMsg3").html('회원 정보가 정상적으로 수정되었습니다.').css('color', 'blue')
+        })
+      }
+
+      function resetValue() {
+        $("#btn-group").html(`<button type="button" onclick="search()"> 조회 </button>`)
+        $("#resultMsg3").html('')
+
+        const form = document.forms["searchForm"]
+        form.userid.value = ''
+        form.name.value = ''
+        form.password.value = ''
+      }
+
+      function deleteData(userid) {
+        axios({
+          method: 'delete',
+          url: `/delete/${userid}`,
+        }).then((res) => {
+          console.log("res", res)
+          if (res.data.result) {
+            $("#resultMsg3").html('회원 탈퇴가 정상적으로 처리되었습니다.').css('color', 'blue')
+          }
+        })
+      }
+    </script>
+  </body>
+</html>
