@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+    <title>session 실습</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      header {
+        width: 100%;
+        height: 60px;
+        background-color: #ddd;
+        padding: 0 20px;
+        margin-bottom: 50px;
+      }
+
+      .header-4 {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .header-4 .menus-left {
+        display: flex;
+        align-items: center;
+      }
+
+      .header-4 .menus-left ul {
+        display: flex;
+        margin: 10px;
+      }
+
+      .header-4 .menus-left li {
+        margin-right: 10px;
+      }
+    </style>
+
+  </head>
+  <body>
+    <header class="header-4">
+      <div class="menus-left">
+        <span>LOGO</span>
+        <ul>
+          <li>MENU1</li>
+          <li>MENU2</li>
+          <li>MENU3</li>
+        </ul>
+      </div>
+      <div id="user-menu" class="menus-right">
+        <span>LOGIN</span>
+        <span>SIGNUP</span>
+      </div>
+    </header>
+
+    <div id="msg">로그인을 해 주세요.</div>
+
+    <script>
+      axios({
+        method: "get",
+        url: "/"
+      }).then((res) => {
+        if (`<%=user%>`) {
+          console.log("res.user", `<%=user%>`)
+          $('#msg').html(`<%=user%> 님, 환영합니다.`)
+          $('#user-menu').html('<span>LOGOUT</span>')
+        }
+      })
+    </script>
+  </body>
+</html>
