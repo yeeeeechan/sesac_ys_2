@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Modal -->
+    <div class="modal fade" id="popup" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="popupLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            ...
+          </div>
+          <div class="modal-footer">
+            <input type="checkbox" id="noPopup" /> <label for="noPopup">오늘 그만 보기</label>
+            <form name="closeForm">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const myModal = new bootstrap.Modal('#popup')
+      myModal.show()
+
+      // 처음 모달창 띄울지 여부: 서버에서 넘긴 값 사용하기
+      if ("<%=noPopup%>" != 'yes') {
+        myModal.show()
+      }
+
+      // checkbox 만들어서 '.checked' 옵션으로 체크박스가 체크되어 있는지 검사(if)
+      function closeCookie() {
+        const closeCheck = document.getElementById("noPopup")
+        if (closeCheck.checked) {
+          axios({
+            method: "post",
+            url: "/close",
+          }).then((res) => {
+            console.log("res.stop", res.stop)
+            if (res.stop == 'yes') {
+              // res.stop -> 객체 형태로 받아와서 쓰도록(document로 받으면 문자열이라 추가 가공 필요)
+              myModal.hide()
+            }
+          })
+        }
+        console.log(document.cookie)
+      }
+    </script>
+
+  </body>
+</html>
