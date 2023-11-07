@@ -8,3 +8,5 @@ SeSAC 강의 코드 관리
 
 - git branch test (1차)
 - git branch test (2차)
+
+- git branch test2
