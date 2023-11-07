@@ -10,3 +10,4 @@ SeSAC 강의 코드 관리
 - git branch test (2차)
 
 - git branch test 2-1 수정함
+- git branch test 2-2 (수정했음)
