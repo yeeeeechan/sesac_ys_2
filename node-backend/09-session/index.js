@@ -44,7 +44,7 @@ app.get("/", (req, res) => {
 // if문으로 로그인 여부를 검사
 app.get("/get", (req, res) => {
   if (req.session.user) {
-    res.render("profile", {});
+    res.render("profile", {}); // pofile.ejs를 랜더, 클라이언트에 보낼 객체
   } else {
     res.redirect("/login");
   }
