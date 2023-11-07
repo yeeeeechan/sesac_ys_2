@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+  <title>회원가입</title>
+  <script>
+    function join() {
+      const form = document.forms["joinForm"]
+      const data = {
+        id: form.userid.value,
+        name: form.name.value,
+        pw: form.password.value,
+      }
+
+      // 이미 있는 아이디인 경우 회원가입 실패도 구현해 보기
+      axios({
+        method: "post",
+        url: "/join",
+        data: data,
+      }).then((res) => {
+        console.log("가입 정보", res.data)
+        alert(`회원가입 성공! ${res.data.userid} 님, 환영합니다.`)
+        document.location.href = '/'
+      })
+    }
+  </script>
+</head>
+
+<body>
+  <form name="joinForm">
+    <fieldset>
+      <legend> 회원가입 </legend>
+      <input type="text" name="userid" placeholder="아이디" required /> <br />
+      <input type="text" name="name" placeholder="이름" required /> <br />
+      <input type="password" name="password" placeholder="비밀번호" required />
+      <button type="button" onclick="join()">가입</button>
+    </fieldset>
+  </form>
+
+</body>
+
+</html>

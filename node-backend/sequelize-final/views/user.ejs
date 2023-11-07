@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>회원 페이지</title>
+
+    <script>
+      function userEdit() {
+        const form = document.forms['userForm']
+        const hiddenId = form.hidden_id.value
+
+        const data = {
+          userid: form.userid.value,
+          name: form.name.value,
+          pw: form.password.value,
+        }
+
+        axios({
+          method: 'patch',
+          url: `/user/edit/${hiddenId}`,
+          data: data
+        }).then((res) => {
+          if (res.data.result) {
+            $('#msg').html('회원 정보가 수정되었습니다.').css('color', 'blue')
+          } else {
+            $('#msg').html('오류! 관리자에게 문의하세요.').css('color', 'red')
+          }
+        })
+      }
+
+      function userDelete() {
+        const form = document.forms['userform']
+        const hiddenId = form.hidden_id.value
+
+        console.log("form.hidden_id.value", hiddenId)
+
+        axios({
+          method: 'delete',
+          url: `/user/delete/${hiddenId}`,
+        }).then((res) => {
+          if (res.data.result) {
+            $('msg').html('탈퇴 처리가 완료되었습니다.').css('color', 'green')
+            document.location.href = '/login'
+          } else {
+            $('msg').html('오류! 관리자에게 문의하세요.').css('color', 'red')
+          }
+        })
+      }
+    </script>
+  </head>
+
+  <body>
+    <form name="userForm">
+      <fieldset>
+        <!-- 서버에서 보낸 data.id값을 사용하기 위해서는 ejs를 한번 타고 들어가야 함. -->
+        <input type="hidden" name="hidden_id" value="<%= data.id %>" id="hidden_id" />
+        <input type="text" name="userid" placeholder="아이디" required /> <br />
+        <input type="text" name="name" placeholder="이름" required /> <br />
+        <input type="password" name="password" placeholder="비밀번호" required />
+        <button type="button" onclick="userEdit()">수정</button>
+        <button type="button" onclick="userDelete()">탈퇴</button>
+      </fieldset>
+    </form>
+
+    <br />
+    <div id="msg"></div>
+  </body>
+
+</html>
