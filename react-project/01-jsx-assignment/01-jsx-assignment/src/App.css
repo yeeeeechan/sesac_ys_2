@@ -1,0 +1,38 @@
+.title {
+  font-size: 30px;
+  background-color: bisque;
+  color: orange;
+  text-align: center;
+}
+
+.content {
+  text-align: center;
+}
+
+.info {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background-color: lightgoldenrodyellow;
+}
+
+.bestSeller {
+  color: orange;
+  text-align: center;
+}
+
+.book-title {
+  text-align: center;
+}
+
+.img-container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+}
+
+img {
+  width: 100px;
+  height: 150px;
+}
