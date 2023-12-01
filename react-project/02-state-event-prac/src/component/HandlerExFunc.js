@@ -1,11 +1,16 @@
 import { useState } from "react";
+import apple from "../static/apple.jpg"
+import banana from "../static/banana.jpg"
+import orange from "../static/orange.jpg"
+import peach from "../static/peach.jpg"
+
 
 const EventFunc = () => {
   const [textColor, setColor] = useState("black");
   const [word, setWord] = useState("검정색");
-  const [btnText, setText] = useState("사라져라");
+  const [btnText, setText] = useState("사라져라")
   const [divText, setDText] = useState("");
-  const [selectText, setSelText] = useState("");
+  
   const [fruitImg, setImg] = useState("");
   const [content, setContent] = useState("");
   const [backColor, setBackColor] = useState("");
@@ -30,9 +35,10 @@ const EventFunc = () => {
     }
   };
 
+
   return (
     <>
-      <h3 style={{ color: textColor }}>{word}</h3>
+      {/* <h3 style={{ color: textColor }}>{word}</h3>
       <button onClick={changeToR}>
         <div>빨간색</div>
       </button>
@@ -42,22 +48,24 @@ const EventFunc = () => {
       <br /> <br />
       <button onClick={changeText}>{btnText}</button>
       <h3>{divText}</h3>
-      <br /> <br />
-      과일:{" "}
+      <br /> <br /> */}
+
+    
+      과일:
       <select
-        onSelect={(e) => {
-          setSelText(e.target.value); //텍스트를 선택된 옵션 값으로 변경
+        onChange={(e) => {
+          setImg(e.target.value); //텍스트를 선택된 옵션 값으로 변경
         }}
       >
-        {" "}
-        <option value="apple">사과</option>
-        <option value="banana">바나나</option>
-        <option value="peach">복숭아</option>
-        <option value="orange">오렌지</option>
+        <option value={apple}>사과</option>
+        <option value={banana}>바나나</option>
+        <option value={peach}>복숭아</option>
+        <option value={orange}>오렌지</option>
       </select>
-      배경색:{" "}
+
+      배경색:
       <select
-        onSelect={(e) => {
+        onChange={(e) => {
           setBackColor(e.target.value);
         }}
       >
@@ -66,10 +74,11 @@ const EventFunc = () => {
         <option value="red">빨강</option>
         <option value="blue">파랑</option>
         <option value="green">초록</option>
-      </select>{" "}
-      글자색:{" "}
+      </select>
+
+      글자색:
       <select
-        onSelect={(e) => {
+        onChange={(e) => {
           setColor(e.target.value);
         }}
       >
@@ -78,23 +87,28 @@ const EventFunc = () => {
         <option value="red">빨강</option>
         <option value="blue">파랑</option>
         <option value="green">초록</option>
-      </select>{" "}
+      </select>
       <br />
-      내용:{" "}
-      <input
-        type="text"
-        value={content}
-        onChange={(e) => {
-          setContent(e.target.value);
-        }}
-      />
-      <img src={fruitImg} className="Section__fruits" /> <br />
-      <div
-        style={{ color: textColor, backgroundColor: backColor }}
-        className="Section__text"
-      >
-        {content}
+
+      <div>
+        내용:
+        <input
+          type="text"
+          onChange={(e) => {
+            setContent(e.target.value);
+          }}
+        />
       </div>
+
+        <img src={fruitImg} className="Section__fruits" /> <br />
+      <div
+          style={{ color: textColor, backgroundColor: backColor }}
+          className="Section__text"
+        >
+            {content}
+      </div>
+
+
     </>
   );
 };

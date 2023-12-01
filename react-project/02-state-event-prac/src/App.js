@@ -10,7 +10,7 @@ function App() {
       {/* <StateClass />
       <StateFunc /> */}
 
-      <HandlerEx />
+      {/* <HandlerEx /> */}
       <EventFunc />
     </div>
   );
