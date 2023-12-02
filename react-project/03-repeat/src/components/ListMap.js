@@ -16,12 +16,12 @@ function ListMap() {
   // [<li>a</li>, <li>b</li>, <li>c</li>]
 
   const addProduct = () => {
-    // 입력된 값이 없는 경우, focus
+    // 입력된 값이 없는 경우, focus되도록 함
     if (inputFocus.current.value == "") {
       inputFocus.current.focus();
     } else {
       // list와 추가할 객체를 합쳐줘야 함
-      // 원래라면, 새로운 상품을 back에서 inset하고 생긴 primary 값을 id로 잡아 주는 게 좋음
+      // 원래라면, 새로운 상품을 back에서 insert하고 생긴 primary 값을 id로 잡아 주는 게 좋음
       const newObj = {
         id: list[list.length - 1].id + 1,
         product: newProduct,
