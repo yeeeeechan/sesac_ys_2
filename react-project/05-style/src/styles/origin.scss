@@ -1,0 +1,73 @@
+$color-main: red;
+
+// style 코드 블록을 @mixin으로 하나로 묶어 두고, (함수처럼)
+@mixin box-size($size) {
+  width: $size;
+  height: $size;
+}
+
+// include 키워드를 이용해서 사용한다.
+.box1 {
+  @include box-size(100px);
+  background-color: blue;
+}
+
+.box2 {
+  @include box-size(200px);
+  background-color: green;
+}
+
+.scss-parents {
+  color: $color-main;
+  // width: 100% - 20%;
+  // background-color: beige;
+}
+
+// 중첩(자식 요소)
+.scss-parents {
+  ul {
+    background-color: black;
+    color: white;
+  }
+
+  // &는 해당 요소 자체를 의미
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+}
+
+// 확장: 앞서 사용했던 css를 여기서도 사용하고 싶다!
+.btn-primary {
+  @extend .btn;
+  background-color: cadetblue;
+  color: antiquewhite;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+// 네모
+.origin-sass {
+  display: flex;
+
+  .box {
+    @include box-size(100px);
+    &.red {
+      background-color: red;
+    }
+
+    &.orange {
+      background-color: orange;
+    }
+
+    &.yellow {
+      background-color: yellow;
+    }
+  }
+}
