@@ -4,6 +4,7 @@ import UseCallbackEx from "./components/UseCallback";
 import UseCallbackEx2 from "./components/UseCalooback(2)";
 import UseMemoEx from "./components/UseMemo";
 import UseReducer from "./components/UseReducer";
+import HookPrac from "./components/HookPrac";
 import { useState } from "react";
 
 function App() {
@@ -20,6 +21,9 @@ function App() {
       <UseReducer />
       <hr />
       <CustomHook />
+      <hr />
+      <hr />
+      <HookPrac />
     </div>
   );
 }
