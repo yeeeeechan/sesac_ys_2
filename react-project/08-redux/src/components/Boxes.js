@@ -1,8 +1,6 @@
-import { useState } from "react";
 import {
   Box2Container,
   Box4Container,
-  Bank,
 } from "../containers/BoxesContainer";
 
 export function Box1({ number }) {
@@ -44,26 +42,5 @@ export function Box4(props) {
       <div>isData {`${isData}`}</div>
       <button onClick={isDataChange}>변경</button>
     </div>
-  );
-}
-
-export function Bank(props) {
-  const { moneyIn, moneyOut } = props;
-  const [cash, setCash] = useState(0);
-
-  return (
-    <>
-      <h2>코딩온 은행</h2>
-      <h3>잔액: {cash}</h3>
-      <input
-        type="number"
-        value={cash}
-        onChange={(e) => {
-          setCash(e.target.value);
-        }}
-      />
-      <button onClick={moneyIn}>입금</button>
-      <button onClick={moneyOut}>출금</button>
-    </>
   );
 }

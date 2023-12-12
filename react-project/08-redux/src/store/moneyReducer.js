@@ -1,12 +1,17 @@
-export const moneyIn = () => ({ type: "MONEYIN" });
-export const moneyOut = () => ({ type: "MONEYOUT" });
+export const moneyIn = (data) => ({ type: "MONEYIN", data: data });
+export const moneyOut = (data) => ({ type: "MONEYOUT", data: data });
 
-const moneyReducer = (state = { cash }, action) => {
-  switch (action.type) {
+
+const initialState = 0
+
+const moneyReducer = (state = initialState, action) => {
+  const {data, type} = action
+
+  switch (type) {
     case "MONEYIN":
-      return { cash: state + action.data };
+      return state + data
     case "MONEYOUT":
-      return { cash: state - action.data };
+      return state - data
     default:
       return state;
   }

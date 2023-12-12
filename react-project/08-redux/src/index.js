@@ -68,7 +68,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import AppRedux3 from "./AppRedux3";
+// import AppRedux3 from "./AppRedux3";
+import AppPrac from "./AppPrac";
 
 import { Provider } from "react-redux";
 import { configureStore } from "@reduxjs/toolkit";
@@ -81,6 +82,6 @@ const store = configureStore({ reducer: rootReducer }, composeWithDevTools());
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <AppRedux3 />
+    <AppPrac />
   </Provider>
 );

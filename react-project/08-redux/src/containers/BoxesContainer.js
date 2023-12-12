@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { Box1, Box2, Box4, Bank } from "../components/Boxes";
 import { increase, decrease } from "../store/counterReducer";
-import { MONEYIN, MONEYOUT } from "../store/moneyReducer";
 
 export function Box1Container() {
   const number = useSelector((state) => state.counter.number);
@@ -30,13 +29,4 @@ export function Box4Container() {
       isDataChange={isDataChange}
     />
   );
-}
-
-export function BankContainer() {
-  const cash = useSelector((state) => state.money);
-  const dispatch = useDispatch();
-  const moneyIn = () => dispatch(MONEYIN, { data: cash });
-  const moneyOut = () => dispatch(MONEYOUT, { data: cash }); // hint. dispatch로 action을 보낼 때 데이터도 함께 보낼 수 있음!
-
-  return <Bank cash={cash} moneyIn={moneyIn} moneyOut={moneyOut} />;
 }
