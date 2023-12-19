@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket</title>
+    <!-- npm i로 설치하여 서버에서 이용하는 소켓을 사용(socket.io cdn) -->
+    <script src="/socket.io/socket.io.js"></script>
+  </head>
+  <body>
+    <h3>소켓 실습</h3>
+    <button onclick="enter()">enter</button>
+    <button onclick="hello()">hello</button>
+    <button onclick="study()">study</button>
+    <button onclick="bye()">bye</button>
+
+    <h4 id="msg"></h4>
+
+    <script>
+      // connection이 일어나는 부분(현재 포트 번호 8000으로 열리고 있으므로 기입 안 해도 됨)
+      const socket = io()
+
+      // 소켓을 이용해 데이터를 전송하는 함수: emit
+      // 소켓을 이용해 데이터를 수신하는 이벤트: on
+
+      function study() {
+        socket.emit("studyEvent", {
+          msg: "공부해라..."
+        })
+      }
+
+      socket.on("study", (res) => {
+        console.log(res)
+        document.getElementById("msg").innerHTML = res.msg
+      })
+
+      function hello() {
+        // emit에 오는 매개변수: 전송할 이벤트 이름 [, 전송할 데이터(없으면 안 넣어도 됨)]
+        // 전송할 데이터의 형태는 자유롭게 (문자열, 숫자, 객체 모두 가능)
+        socket.emit("helloEvent", {
+          msg: "안녕하세요!"
+        })
+      }
+
+      socket.on("helloEvent", (res) => {
+        console.log(res)
+        document.getElementById("msg").innerHTML = res.msg
+      })
+
+      function bye() {
+        socket.emit("byeEvent", {
+          msg: "안녕히 가세요~"
+        })
+      }
+
+      socket.on("byeEvent", (res) => {
+        console.log(res)
+        document.getElementById("msg").innerHTML = res.msg
+      })
+
+      function enter() {
+        socket.emit("enter")
+      }
+
+      // socket.on은 이벤트 핸들러.
+      // 이벤트는 특정 함수 안에 넣어놓지 않도록 유의! (해당 함수가 실행될 때마다 이벤트가 등록되기 때문)
+      socket.on("notice", (res) => {
+        console.log(res.msg)
+      })
+    </script>
+  </body>
+</html>
