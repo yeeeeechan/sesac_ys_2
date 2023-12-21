@@ -32,6 +32,13 @@ export default function Chatting2() {
 
   useEffect(() => {
     // initSocketConnect();
+    socket.on("error", (res) => {
+      alert(res.msg);
+    });
+
+    socket.on("success", (res) => {
+      setUserId(res.userId);
+    });
   }, []);
 
   useEffect(() => {
@@ -52,8 +59,7 @@ export default function Chatting2() {
 
     // (!과제) 실습 3-2. 바로 userId에 값을 할당하지 않고, 서버로부터 success를 받으면 할당하고
     // error를 받으면 중복된다는 알림창 띄우기
-
-    setUserId(userIdInput);
+    // setUserId(userIdInput);
   };
 
   return (

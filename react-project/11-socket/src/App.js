@@ -3,6 +3,7 @@ import "./App.css";
 // import Practice1 from "./components/Practice1";
 
 import Chatting2 from "./components/Chatting2";
+import Chatting3 from "./components/Chatting3";
 
 function App() {
   return (
@@ -15,7 +16,10 @@ function App() {
       {/* <Chattiong1 /> */}
 
       {/* 3-1, 3-2, 3-3번 */}
-      <Chatting2 />
+      {/* <Chatting2 /> */}
+
+      {/* 4, 5번 */}
+      <Chatting3 />
     </div>
   );
 }
