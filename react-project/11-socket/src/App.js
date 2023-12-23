@@ -4,6 +4,7 @@ import "./App.css";
 
 import Chatting2 from "./components/Chatting2";
 import Chatting3 from "./components/Chatting3";
+import ChattingPrac from "./components/ChattingPrac";
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
       {/* <Chatting2 /> */}
 
       {/* 4, 5번 */}
-      <Chatting3 />
+      {/* <Chatting3 /> */}
+
+      <ChattingPrac />
     </div>
   );
 }

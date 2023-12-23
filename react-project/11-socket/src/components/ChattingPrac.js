@@ -1,18 +1,21 @@
 import "../styles/chat.css";
-import { useCallback, useEffect, useReducer, useState, useMemo } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 import Chat from "./Chat";
 import Notice from "./Notice";
 import io from "socket.io-client";
 
 const socket = io.connect("http://localhost:8000", { autoConnect: false });
 
-export default function Chatting3() {
+export default function ChattingPrac() {
   const [msgInput, setMsgInput] = useState("");
   const [userIdInput, setuserIdInput] = useState("");
   const [chatList, setChatList] = useState([]);
   const [userId, setUserId] = useState(null);
   const [userList, setUserList] = useState({});
   const [dmTo, setDmTo] = useState("all");
+
+  const [userIdInput2, setuserIdInput2] = useState("");
+  const [roomId, setRoomId]= useState("")
 
   const initSocketConnect = () => {
     console.log("conneted", socket.conneted);
@@ -33,18 +36,13 @@ export default function Chatting3() {
     });
   }, []);
 
-  // useMemo: 값을 메모라이징한다.
-  // 뒤에 있는 의존성 배열의 값이 update될 때마다 연산을 실행함.
   const userListOptions = useMemo(() => {
-    // <option></option>, <option></option> 의 형태로 넘기고 싶음
     const options = [];
     for (const key in userList) {
-      // key: userList의 key값 (==socket id)
-      // userList[key]: userList의 value값 (== 사용자가 입력한 아이디)
-      if (userList[key] === userId) continue;
+      if (userList[key].userId === userId) continue;
       options.push(
         <option key={key} value={key}>
-          {userList[key]}
+          {userList[key].userId}
         </option>
       );
     }
@@ -53,7 +51,7 @@ export default function Chatting3() {
 
   useEffect(() => {
     const notice = (res) => {
-      const newChatList = [...chatList, { type: "notice", content: res.msg }];
+    const newChatList = [...chatList, { type: "notice", content: res.msg }];
       setChatList(newChatList);
     };
 
@@ -63,13 +61,13 @@ export default function Chatting3() {
 
   const sendMsg = () => {
     if (msgInput !== "")
-      socket.emit("sendMsg", { userId: userId, msg: msgInput, dm: dmTo });
+      socket.emit("sendMsg", { userId: userId, msg: msgInput, dm: dmTo, roomId: roomId });
     setMsgInput("");
   };
 
   const entryChat = () => {
     initSocketConnect();
-    socket.emit("enter", { userId: userIdInput });
+    socket.emit("enter", {userId: userIdInput2, roomId: roomId });
   };
 
   // useCallback: 함수를 메모라이징한다.
@@ -97,16 +95,15 @@ export default function Chatting3() {
     }
   }
 
+  const selected = (e) => {
+    setRoomId(e.target.value)
+  }
+
   return (
     <>
-      <h3>실습 4, 5번</h3>
-      <ul>
-        <li>채팅창에 메시지 전송</li>
-        <li>dm 기능 구현</li>
-      </ul>
-
       {userId ? (
         <>
+          <div>{roomId}에 입장하셨습니다.</div>
           <div>{userId} 님 환영합니다.</div>
           <div className="chat-container">
             {chatList.map((chat, i) => {
@@ -129,15 +126,26 @@ export default function Chatting3() {
           </div>
         </>
       ) : (
-        <>
-          <div className="input-container">
+          <>
+           {/* <div className="input-container">
+              <button onClick={entryChat}>입장</button>
+              <input type="text" value={userIdInput} onChange={(e) => setuserIdInput(e.target.value)} />
+          </div> */}
+            <div className="input-container">
             <input
               type="text"
-              value={userIdInput}
-              onChange={(e) => setuserIdInput(e.target.value)}
-            />
-            <button onClick={entryChat}>입장</button>
-          </div>
+              value={userIdInput2}
+              onChange={(e) => setuserIdInput2(e.target.value)} placeholder="닉네임"
+              />
+              <select value={roomId} onChange={selected}>
+                <option value="ch1">채널1</option>
+                <option value="ch2">채널2</option>
+                <option value="ch3">채널3</option>
+              </select>
+              <button onClick={entryChat}>입장</button>
+            </div>
+            {/* roomId도 함께 보낸다. */}
+
         </>
       )}
     </>

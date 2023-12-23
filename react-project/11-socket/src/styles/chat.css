@@ -1,7 +1,14 @@
+@font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 .chat-container {
   width: 320px;
   min-height: 500px;
-  background-color: skyblue;
+  background-color: rgb(248, 231, 169);
   padding: 6px 10px;
 }
 
@@ -11,8 +18,8 @@
 
 .list > .content {
   display: inline-block;
-  padding: 2px 11px;
-  border-radius: 5px;
+  padding: 5px 12px;
+  border-radius: 15px;
 }
 
 .chat-container .my-chat {
@@ -20,7 +27,10 @@
 }
 
 .chat-container .my-chat .content {
-  background-color: rgb(254, 234, 11);
+  font-family: 'GangwonEdu_OTFBoldA';
+  background-color: rgb(73, 109, 73);
+  color: white;
+  font-size: 18px;
 }
 
 .chat-container .other-chat {
@@ -29,13 +39,16 @@
 
 .chat-container .other-chat .content {
   background-color: white;
+  font-family: 'GangwonEdu_OTFBoldA';
+  font-size: 18px;
 }
 
 .chat-container .notice {
-  font-size: 13px;
   color: rgb(88, 88, 88);
   text-align: center;
-  margin-top: 10px;
+  margin: 13px 10px;
+  font-family: 'GangwonEdu_OTFBoldA';
+
 }
 
 .input-container {
